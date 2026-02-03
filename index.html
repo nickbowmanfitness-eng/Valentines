@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    img {
+      width: 160px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #d32f2f;
+      margin-bottom: 30px;
+    }
+
+    button {
+      border: none;
+      padding: 12px 20px;
+      font-size: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 0 8px;
+      transition: transform 0.2s;
+    }
+
+    .yes-button {
+      background: #ff2d7a;
+      color: white;
+      font-weight: bold;
+    }
+
+    .no-button {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Replace this image with your own cute bear if you want -->
+  <img src="bear.png" alt="Cute Bear">
+
+  <h1>Will you be my Valentine?</h1>
+
+  <button class="yes-button" onclick="handleYesClick()">Yes</button>
+  <button class="no-button" onclick="handleNoClick()">No</button>
+</div>
+
+<script>
+  let messageIndex = 0;
+  const messages = [
+    "No",
+    "Are you sure?",
+    "Really sure?",
+    "Think again...",
+    "Don’t do this 😭",
+    "Last chance",
+    "This hurts",
+    "Okay but why?",
+    "Please??"
+  ];
+
+  function handleNoClick() {
+    const noButton = document.querySelector(".no-button");
+    const yesButton = document.querySelector(".yes-button");
+
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+
+    const currentSize = parseFloat(
+      window.getComputedStyle(yesButton).fontSize
+    );
+    yesButton.style.fontSize = `${currentSize * 1.5}px`;
+  }
+
+  function handleYesClick() {
+    window.location.href = "yes_page.html";
+  }
+</script>
+
+</body>
+</html>
